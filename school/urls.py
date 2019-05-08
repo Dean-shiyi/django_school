@@ -16,10 +16,13 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from school_views import views
+from django.views.static import serve
+from .settings import MEDIA_ROOT,BASE_DIR
+import os
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('index', views.index),
+    url('index', views.index, name='Index'),
     url(r'^home/', views.Home, name='Home'),
     url(r'^about/', views.AboutUs, name='AboutUs'),
     url(r'^courses/', views.Courses, name='Courses'),
@@ -28,4 +31,9 @@ urlpatterns = [
     url(r'^short_codes/', views.Shor_codes, name='Short_codes'),
     url(r'^gallery/', views.Gallery, name='Gallery'),
     url(r'^contact_us/', views.Contact_us, name='Contact_us'),
+    url(r'^login/', views.Login, name='Login'),
+    url(r'^register/', views.Register, name='Register'),
+
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': os.path.join(BASE_DIR, 'static')}),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 ]

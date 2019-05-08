@@ -53,7 +53,7 @@
 					</a>
 				</div>
 				<div class="header-top-righ">
-					<a href="login.html">
+					<a href="{% url 'Login' %}">
 						<span class="fa fa-sign-out" aria-hidden="true"></span>Login</a>
 				</div>
 				<div class="clearfix"> </div>
@@ -83,17 +83,17 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<nav class="link-effect-2" id="link-effect-2">
 							<ul class="nav navbar-nav">
-								<li>
-									<a href="index.html" class="effect-3">Home</a>
+								<li class="active">
+									<a href="{% url 'Home' %}" class="effect-3">Home</a>
 								</li>
 								<li>
-									<a href="about.html" class="effect-3">About Us</a>
+									<a href="{% url 'AboutUs' %}" class="effect-3">About Us</a>
 								</li>
 								<li>
-									<a href="courses.html" class="effect-3">Courses</a>
+									<a href="{% url 'Courses' %}" class="effect-3">Courses</a>
 								</li>
 								<li>
-									<a href="join.html" class="effect-3">Join Us</a>
+									<a href="{% url 'Join_us' %}" class="effect-3">Join Us</a>
 								</li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages
@@ -101,18 +101,18 @@
 									</a>
 									<ul class="dropdown-menu" role="menu">
 										<li>
-											<a href="icons.html">Web Icons</a>
+											<a href="{% url 'Web_icon' %}">Web Icons</a>
 										</li>
 										<li>
-											<a href="codes.html">Short Codes</a>
+											<a href="{% url 'Short_codes' %}">Short Codes</a>
 										</li>
 									</ul>
 								</li>
 								<li>
-									<a href="gallery.html" class="effect-3">Gallery</a>
+									<a href="{% url 'Gallery' %}" class="effect-3">Gallery</a>
 								</li>
 								<li>
-									<a href="contact.html" class="effect-3">Contact Us</a>
+									<a href="{% url 'Contact_us' %}" class="effect-3">Contact Us</a>
 								</li>
 							</ul>
 						</nav>
@@ -212,19 +212,19 @@
 				<div class="botttom-nav-allah">
 					<ul>
 						<li>
-							<a href="index.html">Home</a>
+							<a href="{% url 'Home' %}">Home</a>
 						</li>
 						<li>
-							<a href="about.html">About Us</a>
+							<a href="{% url 'AboutUs' %}">About Us</a>
 						</li>
 						<li>
-							<a href="courses.html">Courses</a>
+							<a href="{% url 'Courses' %}">Courses</a>
 						</li>
 						<li>
-							<a href="join.html">Join Us</a>
+							<a href="{% url 'Join_us' %}">Join Us</a>
 						</li>
 						<li>
-							<a href="contact.html">Contact Us</a>
+							<a href="{% url 'Contact_us' %}">Contact Us</a>
 						</li>
 					</ul>
 				</div>

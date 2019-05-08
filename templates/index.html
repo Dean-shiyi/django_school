@@ -17,14 +17,18 @@
 		}
 	</script>
 	<!-- //meta-tags -->
-	<link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href={% static 'css/bootstrap.css' %} rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'css/style.css'%}" rel="stylesheet" type="text/css" media="all" />
 	<!-- font-awesome -->
-	<link href="../static/css/font-awesome.css" rel="stylesheet">
+	<link href="{% static 'css/font-awesome.css'%}" rel="stylesheet">
 	<!-- fonts -->
 	<link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
 	    rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <style>
+        #pic{background:no-repeat 0px 0px !important;
+            background-size: cover!important;}
+    </style>
 </head>
 
 <body>
@@ -52,7 +56,7 @@
 					</a>
 				</div>
 				<div class="header-top-righ">
-					<a href="login.html">
+					<a href="{% url 'Login' %} ">
 						<span class="fa fa-sign-out" aria-hidden="true"></span>Login</a>
 				</div>
 				<div class="clearfix"> </div>
@@ -71,7 +75,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="index.html">
+						<a class="navbar-brand" href="{% url 'Index' %}">
 							<h1>
 								<span class="fa fa-leanpub" aria-hidden="true"></span>Best Study
 								<label>Education & Courses</label>
@@ -315,117 +319,121 @@
 			</div>
 			<div class="yaallahaa-news-grids-agile">
 				<div class="yaallahaa-news-grid">
+                    {% for event in events|slice:'0:4' %}
 					<div class="col-md-6 yaallahaa-news-left">
-						<div class="col-xs-6 news-left-img">
+						<div ><img src="{{ MEDIA_URL }}{{ event.img }}" alt=" " id="pic" >
 							<div class="news-left-text color-event1">
-								<h5>20 Dec</h5>
+								<h5>{{ event.date|date:'Y-m-d' }}</h5>
 							</div>
 						</div>
 						<div class="col-xs-6 news-grid-info-bottom-w3ls">
 							<div class="news-left-top-text text-color1">
-								<a href="#" data-toggle="modal" data-target="#myModal">Integer viverra eleifend neque</a>
+								<a href="#" data-toggle="modal" data-target="#myModal"> {{ event.title }} </a>
 							</div>
 							<div class="date-grid">
 								<div class="admin">
 									<a href="#">
-										<span class="fa fa-clock-o" aria-hidden="true"></span> 7:00 pm - 9:00 pm</a>
+										<span class="fa fa-clock-o" aria-hidden="true"></span> {{ event.time }}</a>
 								</div>
 								<div class="time">
 									<p>
-										<span class="fa fa-map-marker" aria-hidden="true"></span> Newyork City, 2589</p>
+										<span class="fa fa-map-marker" aria-hidden="true"></span> {{ event.addr }}</p>
 								</div>
 								<div class="clearfix"> </div>
 							</div>
 							<div class="news-grid-info-bottom-w3ls-text">
-								<p>Aliquam erat volutpat. Duis vulputate tempus laoreet.</p>
+								<p>{{ event.desc }}</p>
 							</div>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
-					<div class="col-md-6 yaallahaa-news-left">
-						<div class="col-xs-6 news-left-img news-left-img1">
-							<div class="news-left-text color-event2">
-								<h5>27 Dec</h5>
-							</div>
-						</div>
-						<div class="col-xs-6 news-grid-info-bottom-w3ls">
-							<div class="news-left-top-text text-color2">
-								<a href="#" data-toggle="modal" data-target="#myModal">Integer viverra eleifend neque</a>
-							</div>
-							<div class="date-grid">
-								<div class="admin">
-									<a href="#">
-										<span class="fa fa-clock-o" aria-hidden="true"></span> 6:00 am - 8:00 am</a>
-								</div>
-								<div class="time">
-									<p>
-										<span class="fa fa-map-marker" aria-hidden="true"></span> Newyork City, 1452</p>
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-							<div class="news-grid-info-bottom-w3ls-text">
-								<p>Aliquam erat volutpat. Duis vulputate tempus laoreet.</p>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="yaallahaa-news-grid">
-					<div class="col-md-6 yaallahaa-news-left">
-						<div class="col-xs-6 news-left-img news-left-img2">
-							<div class="news-left-text color-event3">
-								<h5>28 Dec</h5>
-							</div>
-						</div>
-						<div class="col-xs-6 news-grid-info-bottom-w3ls">
-							<div class="news-left-top-text text-color3">
-								<a href="#" data-toggle="modal" data-target="#myModal">Integer viverra eleifend neque</a>
-							</div>
-							<div class="date-grid">
-								<div class="admin">
-									<a href="#">
-										<span class="fa fa-clock-o" aria-hidden="true"></span> 10:00 am - 1:00 pm</a>
-								</div>
-								<div class="time">
-									<p>
-										<span class="fa fa-map-marker" aria-hidden="true"></span> Newyork City, 7458</p>
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-							<div class="news-grid-info-bottom-w3ls-text">
-								<p>Aliquam erat volutpat. Duis vulputate tempus laoreet.</p>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-md-6 yaallahaa-news-left">
-						<div class="col-xs-6 news-left-img news-left-img3">
-							<div class="news-left-text color-event4">
-								<h5>30 Dec</h5>
-							</div>
-						</div>
-						<div class="col-xs-6 news-grid-info-bottom-w3ls">
-							<div class="news-left-top-text text-color4">
-								<a href="#" data-toggle="modal" data-target="#myModal">Integer viverra eleifend neque</a>
-							</div>
-							<div class="date-grid">
-								<div class="admin">
-									<a href="#">
-										<span class="fa fa-clock-o" aria-hidden="true"></span> 7:00 pm - 9:00 pm</a>
-								</div>
-								<div class="time">
-									<p>
-										<span class="fa fa-map-marker" aria-hidden="true"></span> Newyork City, 786.</p>
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-							<div class="news-grid-info-bottom-w3ls-text">
-								<p>Aliquam erat volutpat. Duis vulputate tempus laoreet.</p>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
+                    {% endfor %}
+{#					<div class="col-md-6 yaallahaa-news-left">#}
+{#						<div class="col-xs-6 news-left-img news-left-img1">#}
+{#							<div class="news-left-text color-event2">#}
+{#								<h5>27 Dec</h5>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="col-xs-6 news-grid-info-bottom-w3ls">#}
+{#							<div class="news-left-top-text text-color2">#}
+{#								<a href="#" data-toggle="modal" data-target="#myModal">Integer viverra eleifend neque</a>#}
+{#							</div>#}
+{#							<div class="date-grid">#}
+{#								<div class="admin">#}
+{#									<a href="#">#}
+{#										<span class="fa fa-clock-o" aria-hidden="true"></span> 6:00 am - 8:00 am</a>#}
+{#								</div>#}
+{#								<div class="time">#}
+{#									<p>#}
+{#										<span class="fa fa-map-marker" aria-hidden="true"></span> Newyork City, 1452</p>#}
+{#								</div>#}
+{#								<div class="clearfix"> </div>#}
+{#							</div>#}
+{#							<div class="news-grid-info-bottom-w3ls-text">#}
+{#								<p>Aliquam erat volutpat. Duis vulputate tempus laoreet.</p>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="clearfix"> </div>#}
+{#					</div>#}
+{#					<div class="clearfix"> </div>#}
+{#				</div>#}
+{#				<div class="yaallahaa-news-grid">#}
+{#                    {% for event in events|slice:'2:2' %}#}
+{#					<div class="col-md-6 yaallahaa-news-left">#}
+{#						<div class="col-xs-6 news-left-img news-left-img2">#}
+{#							<div class="news-left-text color-event3">#}
+{#								<h5>{{ event.date }}</h5>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="col-xs-6 news-grid-info-bottom-w3ls">#}
+{#							<div class="news-left-top-text text-color3">#}
+{#								<a href="#" data-toggle="modal" data-target="#myModal">{{ event.title }}</a>#}
+{#							</div>#}
+{#							<div class="date-grid">#}
+{#								<div class="admin">#}
+{#									<a href="#">#}
+{#										<span class="fa fa-clock-o" aria-hidden="true"></span> {{ event.time }}</a>#}
+{#								</div>#}
+{#								<div class="time">#}
+{#									<p>#}
+{#										<span class="fa fa-map-marker" aria-hidden="true"></span> {{ event.addr }}</p>#}
+{#								</div>#}
+{#								<div class="clearfix"> </div>#}
+{#							</div>#}
+{#							<div class="news-grid-info-bottom-w3ls-text">#}
+{#								<p>{{ event.desc }}</p>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="clearfix"> </div>#}
+{#					</div>#}
+{#                    {% endfor %}#}
+{#					<div class="col-md-6 yaallahaa-news-left">#}
+{#						<div class="col-xs-6 news-left-img news-left-img3">#}
+{#							<div class="news-left-text color-event4">#}
+{#								<h5>30 Dec</h5>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="col-xs-6 news-grid-info-bottom-w3ls">#}
+{#							<div class="news-left-top-text text-color4">#}
+{#								<a href="#" data-toggle="modal" data-target="#myModal">Integer viverra eleifend neque</a>#}
+{#							</div>#}
+{#							<div class="date-grid">#}
+{#								<div class="admin">#}
+{#									<a href="#">#}
+{#										<span class="fa fa-clock-o" aria-hidden="true"></span> 7:00 pm - 9:00 pm</a>#}
+{#								</div>#}
+{#								<div class="time">#}
+{#									<p>#}
+{#										<span class="fa fa-map-marker" aria-hidden="true"></span> Newyork City, 786.</p>#}
+{#								</div>#}
+{#								<div class="clearfix"> </div>#}
+{#							</div>#}
+{#							<div class="news-grid-info-bottom-w3ls-text">#}
+{#								<p>Aliquam erat volutpat. Duis vulputate tempus laoreet.</p>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="clearfix"> </div>#}
+{#					</div>#}
 					<div class="clearfix"> </div>
 				</div>
 			</div>
@@ -515,66 +523,67 @@
 				</div>
 			</div>
 			<ul id="flexiselDemo1">
+                {% for clientsay in clientsays %}
 				<li>
 					<div class="three_testimonials_grid_main">
 						<div class="col-xs-3 three_testimonials_grid_pos">
 							<div class="grid-test-allah-agile">
-								<img src="../static/images/te1.jpg" alt=" " class="img-responsive" />
+								<img src="{{ MEDIA_URL }}{{ clientsay.img }}" alt=" " class="img-responsive" />
 							</div>
 						</div>
 						<div class="col-xs-9 three_testimonials_grid">
 							<div class="three_testimonials_grid1">
-								<h5>Michael Paul</h5>
-								<p>Client 1</p>
+								<h5>{{ clientsay.name }}</h5>
+								<p>{{ clientsay.lesson }}</p>
 							</div>
 							<p>
-								Donec laoreet eu purus eu viverra. Vestibulum sed convallis massa, eu aliquet massa. Suspendisse lacinia rutrum tincidunt.
-								Integer id erat porta, convallis.
+								{{ clientsay.words }}
 							</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
 				</li>
-				<li>
-					<div class="three_testimonials_grid_main">
-						<div class="col-xs-3 three_testimonials_grid_pos">
-							<div class="grid-test-allah-agile">
-								<img src="../static/images/te2.jpg" alt=" " class="img-responsive" />
-							</div>
-						</div>
-						<div class="col-xs-9 three_testimonials_grid">
-							<div class="three_testimonials_grid1">
-								<h5>Faul John</h5>
-								<p>Client 2</p>
-							</div>
-							<p>
-								Donec laoreet eu purus eu viverra. Vestibulum sed convallis massa, eu aliquet massa. Suspendisse lacinia rutrum tincidunt.
-								Integer id erat porta, convallis.
-							</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</li>
-				<li>
-					<div class="three_testimonials_grid_main">
-						<div class="col-xs-3 three_testimonials_grid_pos">
-							<div class="grid-test-allah-agile">
-								<img src="../static/images/te3.jpg" alt=" " class="img-responsive" />
-							</div>
-						</div>
-						<div class="col-xs-9 three_testimonials_grid">
-							<div class="three_testimonials_grid1">
-								<h5>Richa Roy</h5>
-								<p>Client 3</p>
-							</div>
-							<p>
-								Donec laoreet eu purus eu viverra. Vestibulum sed convallis massa, eu aliquet massa. Suspendisse lacinia rutrum tincidunt.
-								Integer id erat porta, convallis.
-							</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</li>
+                {% endfor %}
+{#				<li>#}
+{#					<div class="three_testimonials_grid_main">#}
+{#						<div class="col-xs-3 three_testimonials_grid_pos">#}
+{#							<div class="grid-test-allah-agile">#}
+{#								<img src="../static/images/te2.jpg" alt=" " class="img-responsive" />#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="col-xs-9 three_testimonials_grid">#}
+{#							<div class="three_testimonials_grid1">#}
+{#								<h5>Faul John</h5>#}
+{#								<p>Client 2</p>#}
+{#							</div>#}
+{#							<p>#}
+{#								Donec laoreet eu purus eu viverra. Vestibulum sed convallis massa, eu aliquet massa. Suspendisse lacinia rutrum tincidunt.#}
+{#								Integer id erat porta, convallis.#}
+{#							</p>#}
+{#						</div>#}
+{#						<div class="clearfix"> </div>#}
+{#					</div>#}
+{#				</li>#}
+{#				<li>#}
+{#					<div class="three_testimonials_grid_main">#}
+{#						<div class="col-xs-3 three_testimonials_grid_pos">#}
+{#							<div class="grid-test-allah-agile">#}
+{#								<img src="../static/images/te3.jpg" alt=" " class="img-responsive" />#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="col-xs-9 three_testimonials_grid">#}
+{#							<div class="three_testimonials_grid1">#}
+{#								<h5>Richa Roy</h5>#}
+{#								<p>Client 3</p>#}
+{#							</div>#}
+{#							<p>#}
+{#								Donec laoreet eu purus eu viverra. Vestibulum sed convallis massa, eu aliquet massa. Suspendisse lacinia rutrum tincidunt.#}
+{#								Integer id erat porta, convallis.#}
+{#							</p>#}
+{#						</div>#}
+{#						<div class="clearfix"> </div>#}
+{#					</div>#}
+{#				</li>#}
 
 			</ul>
 		</div>
