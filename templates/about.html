@@ -52,8 +52,14 @@
 					</a>
 				</div>
 				<div class="header-top-righ">
-					<a href="{% url 'Login' %}">
+                    {% if request.user.is_anonymous %}
+                        <a href="{% url 'Login' %} ">
 						<span class="fa fa-sign-out" aria-hidden="true"></span>Login</a>
+                    {% else %}
+                        <a href="{% url 'logout' %} ">
+						<span class="fa fa-sign-out" aria-hidden="true"></span>Logout</a>
+                    {% endif %}
+
 				</div>
 				<div class="clearfix"> </div>
 			</div>

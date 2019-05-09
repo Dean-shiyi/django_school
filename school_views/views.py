@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import SchoolEvents,ClientsSay
+from school_users.forms import UserLoginForm,RegisterForm
 # Create your views here.
 
 
@@ -37,7 +38,12 @@ def Contact_us(request):
     return render(request, 'contact.html')
 
 def Login(request):
-    return render(request, 'login.html')
+    return render(request, 'login.html',
+                  {'UserLoginForm': UserLoginForm,
+                   })
 
 def Register(request):
-    return render(request, 'register.html')
+    return render(request, 'register.html',
+                  {'RegisterForm': RegisterForm
+                  })
+
