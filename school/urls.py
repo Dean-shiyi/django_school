@@ -17,7 +17,7 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from school_views import views
 from django.views.static import serve
-from .settings import MEDIA_ROOT,BASE_DIR
+from .settings import MEDIA_ROOT,BASE_DIR,STATIC_ROOT
 import os
 
 urlpatterns = [
@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^login/', views.Login, name='Login'),
     url(r'^register/', views.Register, name='Register'),
 
-    url(r'^static/(?P<path>.*)$', serve, {'document_root': os.path.join(BASE_DIR, 'static')}),
+    # url(r'^static/(?P<path>.*)$', serve, {'document_root': os.path.join(BASE_DIR, 'static')}),
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': STATIC_ROOT}),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 ]
