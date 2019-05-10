@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-
+from .models import AdmissionInfo
 MyUser = get_user_model()
 
 
@@ -18,3 +18,17 @@ class RegisterForm(forms.ModelForm):
         }
 
 
+class AdmisssionForm(forms.ModelForm):
+    class Meta:
+        model = AdmissionInfo
+        fields = ('name',
+                  'birth',
+                  'gender',
+                  'Email',
+                  'Phone',
+                  'course',
+                  'course_time',
+                  'addr',
+                  'line',
+                  'city',
+                  'zip_code')
